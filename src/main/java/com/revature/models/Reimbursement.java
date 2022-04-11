@@ -1,5 +1,7 @@
 package com.revature.models;
 
+import java.time.LocalDate;
+
 /**
  * This concrete Reimbursement class can include additional fields that can be used for
  * extended functionality of the ERS application.
@@ -14,6 +16,10 @@ package com.revature.models;
  *
  */
 public class Reimbursement extends AbstractReimbursement {
+	
+	private String description;
+	private LocalDate creationDate;
+	private LocalDate resolutionDate;
 
     public Reimbursement() {
         super();
@@ -23,7 +29,38 @@ public class Reimbursement extends AbstractReimbursement {
      * This includes the minimum parameters needed for the {@link com.revature.models.AbstractReimbursement} class.
      * If other fields are needed, please create additional constructors.
      */
-    public Reimbursement(int id, Status status, User author, User resolver, double amount) {
+    public Reimbursement(int id, Status status, User author, User resolver, double amount, 
+    	   String description,LocalDate creationDate, LocalDate resolutionDate) {
+    	
         super(id, status, author, resolver, amount);
+        this.description = description;
+        this.creationDate = creationDate;
+        this.resolutionDate = resolutionDate;
     }
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public LocalDate getCreationDate() {
+		return creationDate;
+	}
+
+	public void setCreationDate(LocalDate creationDate) {
+		this.creationDate = creationDate;
+	}
+
+	public LocalDate getResolutionDate() {
+		return resolutionDate;
+	}
+
+	public void setResolutionDate(LocalDate resolutionDate) {
+		this.resolutionDate = resolutionDate;
+	}
+    
+    
 }

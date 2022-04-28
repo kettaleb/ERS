@@ -1,0 +1,21 @@
+body{
+	max-width: max-content;
+	margin:auto;
+}
+
+h1 h2 h3 h4 h5{
+	text-align: center;
+}
+
+.nav{
+	text-align: center;
+}
+
+.required::after {
+    content:" *";
+    color: red;
+  }
+  
+  .validationError {
+        color: red;
+    }

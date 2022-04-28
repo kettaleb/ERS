@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8"></meta>
+	<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+	<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" th:href=@{/styles.css}>
+	<title>Home Page</title>
+    <title>reimbursement List</title>
+</head>
+
+<body>
+	<br/>
+	<p th:align= "center" class="nav"><a th:href=@{/reimbursements/reimbrequest}>Request a Reimbursement<a/> | <a th:href="@{/}">Home</a> </p>
+
+	<br/>
+	<h4 align="center">Reimbursement List</h4>
+	<div class="container">	
+		<table class="table table-bordered table-striped table-sm">
+			<thead class="thead-dark">
+				
+					<tr>
+					<th>Reimb. Id</th>
+					<th>Amount</th>
+					<th> Reimb. Type</th>
+					<th>Request Date</th>
+					<th>Description </th>
+					<th>Reimb. Status</th>
+					<th>Reason</th>
+					<th>Approval Date</th>
+					<th>Employee Name</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+				<tbody>
+				<tr th:each="reimb : ${reimbursement}">
+					<td th:text="${reimb.reimbId}">
+					<td th:text="${reimb.reimbAmount}">
+					<td th:text="${reimb.reimbType}">
+					<td th:text="${#temporals.format(reimb.reimCreationDate, 'MM/dd/yyyy  hh:mm a')}">
+					<td th:text="${reimb.reimbDescription}">
+					<td th:text="${reimb.reimbStatus}">
+					<td th:text="${reimb.reimbApprovalReason}">
+					<td th:text="${#temporals.format(reimb.reimApprovalDate, 'MM/dd/yyyy  hh:mm a')}">
+					<td th:text="${{reimb.ersUser?.firstName}} +' '+ ${{reimb.ersUser?.lastName}}"/>
+					
+					
+				     <td>
+						<a th:href="@{/reimbursements/update(id=${reimb.reimbId})}" 
+						   class="btn btn-info btn-sm"
+						 /> Update
+						 
+						 <a th:href="@{/reimbursements/delete(id=${reimb.reimbId})}" 
+						   class="btn btn-danger btn-sm"
+						   Onclick="if(!(confirm('Do want to delete this reimbursement?'))) return false"/> Delete
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

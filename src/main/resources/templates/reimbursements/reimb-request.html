@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8"></meta>
+	<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+	
+	<!--Read CSS-->
+	<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+	<link rel="stylesheet" th:href="@{/css/reimbursement/signup.css}">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	
+	<!--Read JS-->
+	<script th:src="@{/webjars/jquery/jquery.min.js}" defer></script>
+	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" defer></script>
+	<title>Reimbursement Requests</title>
+</head>
+<body>
+<br/>
+<p th:align= "center" class="nav"><a th:href="@{/}"> Home</a> | <a th:href=@{/reimbursements/list}>Reimbursement List<a/></p>
+	<br/>
+  <div class="container">
+   <form id="signup-form" method="POST" th:action="@{/reimbursements/save}" class="form-signup" th:object="${reimbursement}">
+		<h5 class="text-center ">Reimbursement Requests</h5>
+			
+			
+	<!--Remb. Amount-->
+	<div class="form-group">
+		<label for="reimbAmount">Reimbursement Amount</label>
+		<input type="text" class="form-control" placeholder="Amount" th:field="${reimbursement.reimbAmount}"/>
+	</div>
+	<!--Reimbursement Type-->
+	<div class="form-group row">
+			<label>Reimbursement types</label>
+			<select th:field="${reimbursement.reimbType}">
+				<option th:value="selectEvent">Select a Type</option>
+				<option th:value="Lodging">Lodging</option>
+				<option th:value="Food">Food</option>
+				<option th:value="Travel">Travel</option>
+			</select>
+	</div>
+	<br/>
+	<!--Reimbursement Description-->
+	<div class="form-group">
+		<label for="reimbDescription">Reimbursement Description</label>
+		<input type="text" class="form-control" placeholder="Description of the reimbursement" th:field="${reimbursement.reimbDescription}"/>
+	</div>
+	<br/>
+	<!--User/Employee Name-->
+	<select th:field="*{ersUser}">
+		<option th:value="selectUserName">Select Employee Name</option>
+		<option th:each="user : ${allErsUsers}"
+				th:value="${user.userId}"
+				th:text= "${user.firstName} +' '+ ${user.lastName}">
+		</option>		
+	</select>
+	<br/>	
+ 	<!--Signup and Cancel Button-->
+	<input type="submit" value="Submit" class="btn btn-primary w-50 mt-3"/>
+	<input type="reset" value="Reset" class="btn btn-primary w-50 mt-3"/>
+  </form>
+ </div> 
+</body>
+</html>

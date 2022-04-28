@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Reimbursement Status Chart </title>
+</head>
+
+<body>
+<a href="/">Home</a>
+	<h4 class="text-center">Reimbursement Status Chart </h4>
+	
+	<br/>
+	<div class="container">	
+		<div align="center">
+			<div class="col-md-4">
+					<canvas id="myPieChart" height="50" width="50"></canvas>
+					<br/>
+					<script>
+						var dataChart = "[[${reimbursementStatusCount}]]"
+					</script>
+					
+			</div>
+		</div>
+	</div>
+	
+	
+	<script type="text/javascript" th:src="@{/js/ReimbursementStatuschart.js}"></script>
+	
+</body>
+</html>

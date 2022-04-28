@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8"></meta>
+	<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+	<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" th:href=@{/styles.css}>
+	
+	<title>Update Reimbursement</title>
+</head>
+<body class="bg-green">
+  <div class="container">
+   <form id="signup-form" method="POST" th:action="@{/reimbursements/save}" class="form-signup" 
+         th:object="${reimbursement}">
+		<h5 class="text-center ">Update Reimbursement Requests</h5>
+		
+		<!--used to bind to the user that we clicked on-->
+	<input type="hidden" th:field="${reimbursement.reimbId}"/>
+	<input type="hidden" th:field="${reimbursement.ersUser}"/>
+		
+		<!--Remb. Amount-->
+	<div class="form-group">
+		<label for="reimbAmount">Reimbursement Amount</label>
+		<input type="text" class="form-control" th:field="${reimbursement.reimbAmount}"/>
+	</div>
+	<!--Reimbursement Type-->
+	<div class="form-group row">
+			<label>Reimbursement types</label>
+			<select th:field="${reimbursement.reimbType}">
+				<option th:value="selectEvent">Select a Type</option>
+				<option th:value="Lodging">Lodging</option>
+				<option th:value="Food">Food</option>
+				<option th:value="Travel">Travel</option>
+			</select>
+	</div>
+	<br/>
+	<!--Reimbursement Description-->
+	<div class="form-group">
+		<label for="reimbDescription">Reimbursement Description</label>
+		<input type="text" class="form-control" th:field="${reimbursement.reimbDescription}"/>
+	</div>
+	<!--Reimbursement Description-->
+	<div class="form-group">
+		<input type="hidden" class="form-control" th:field="${reimbursement.reimCreationDate}"/>
+	</div>
+	<!--Reimbursement Status-->
+	<div class="form-group row">
+			<label>Reimbursement Status</label>
+			<select th:field="${reimbursement.reimbStatus}">
+				<option th:value="selectStatus">Select a Status</option>
+				<option th:value="Pending">Pending</option>
+				<option th:value="Approved">Approved</option>
+				<option th:value="Denied">Denied</option>
+			</select>
+	</div>
+	<!--Approval Reason-->
+	<div class="form-group">
+		<label for="reimbApprovalReason">Reimbursement Approval Reason</label>
+		<input type="text" class="form-control" th:field="${reimbursement.reimbApprovalReason}"/>
+	</div>
+	<br/>
+ 	<!--Signup Button-->
+	<input type="submit" value="Submit" class="btn btn-primary w-40 mt-3"/>
+	<button class="btn btn-primary w-40 mt-3"><a href="/reimbursements/list"></a>Cancel</button>	
+  </form>
+ </div> 
+</body>
+</html>

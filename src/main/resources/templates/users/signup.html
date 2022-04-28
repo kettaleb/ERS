@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8"></meta>
+	<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+	<link rel="stylesheet" th:href=@{/styles.css}>
+	
+	<title>User Registration</title>
+</head>
+<body>
+	<br/>
+	
+  <div class="container">
+   <form id="signup-form" method="POST" th:action="@{/users/save}" class="form-signup" th:object="${user}">
+		<h3 class="text-center ">User Registration</h3>
+			
+	<!--Username-->
+	<div class="form-group">
+		<label for="username">Username</label>
+		<input type="text" class="form-control" placeholder="Username" th:field="${user.username}"/>
+		 <div class="validationError" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
+		<!--<td th:if="${#fields.hasErrors('userName')}"  th:errors="*{userName}">Name Error</td>-->
+	</div>
+	<br/>
+	<!--Username-->
+	<div class="form-group">
+		<label for="password">Password</label>
+		<input type="password" class="form-control" placeholder="Password" th:field="${user.password}"/>
+		<td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Name Error</td>
+	</div>
+	<br/>
+	<!--User Role
+	<div class="form-group">
+		<input type="text" value="USER_ROLE" th:value="${user.ersUserRole}"/>
+	</div>-->
+	<!--First Name-->
+	<div class="form-group">
+		<label for="firstName">First Name</label>
+		<input type="text" class="form-control" placeholder="First Name" th:field="${user.firstName}"/>
+		<td th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">Name Error</td>
+	</div>
+	<br/>
+	<!--Last Name-->
+	<div class="form-group">
+		<label for="lastName">Last Name</label>
+		<input type="text" class="form-control" placeholder="Last Name" th:field="${user.lastName}"/>
+		<td th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Name Error</td>
+	</div>
+	<br/>
+	<!--Gender-->
+	<div class="form-group row">
+			<label>Gender</label>
+			<select th:field="${user.gender}">
+				<option th:value="selectGender">Select your gender</option>
+				<option th:value="Male">Male</option>
+				<option th:value="Female">Female</option>
+			</select>
+
+	</div>
+	<br/>
+	<!--Email-->
+	<div class="form-group">
+		<label for="email">Email Address</label>
+		<input type="text" class="form-control" placeholder="Email Address" th:field="${user.email}"/>
+	</div>
+	<br/>
+	<!--Phone Number-->
+	<div class="form-group">
+		<label for="phoneNumber">Phone Number</label>
+		<input type="text" class="form-control" th:field="${user.phoneNumber}"/>
+	</div>
+	<br/>
+	<!--Home Address-->
+	<div class="form-group">
+		<label for="address">Home Address</label>
+		<input type="text" class="form-control" th:field="${user.address}"/>
+	</div>
+	<br/>
+	
+	<!--Signup Button-->
+	<input type="submit" value="Register" class="btn btn-primary w-50 mt-3"/> 
+	<input type="reset" value="Reset" class="btn btn-primary w-50 mt-3"/>
+	<button type="button"><a href="/">Cancel</a></button>
+	
+  </form>
+ </div> 
+</body>
+</html>

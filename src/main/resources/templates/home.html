@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" Lang="en">
+<head>
+	<meta charset="UTF-8"></meta>
+	<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+	<link rel="stylesheet" th:href=@{/styles.css}>
+	<title>Home Page</title>
+</head>
+<body>
+		<h2 th:align="center"> WELCOME TO THE ERS</h2>
+		
+		<form class="form-inline my-2 my-lg-0" form-method="post" th:action="@{/logout}">
+		<button class="btn btn-outline-info my-2 my-sm-0" type="submit">Logout</button>
+	</form>
+		<p class="nav"><a th:href=@{/reimbursements/reimbrequest}>Request a Reimbursement<a/> | <a th:href="@{/reimbursements/list}">Reimbursement List</a> |
+		<a th:href=@{/reimbursements/displaydata}>Reimbursement Status Chart<a/> | <a th:href="@{/register}">Register a user</a> | <a th:href="@{/users/list}">Users List</a></p>
+		<img th:src="@{images/coding.png}"/>
+
+</body>
+</html>

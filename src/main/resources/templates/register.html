@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8"></meta>
+	<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+	<link rel="stylesheet" th:href=@{/styles.css}>
+	
+	<title>Registration</title>
+</head>
+<body>
+<br/>
+	<a th:href="@{/}">Home</a> | <a th:href="@{/users/list}">Users List</a></p>
+	<br/>
+   <form id="signup-form" method="POST" th:action="@{/register}" th:object="${registerationPage}">
+		<h3>Register for ERS</h3>
+			
+	<!--Username-->
+	<div>
+		<label class="required" for="username">Username</label>
+		<input type="text" th:name="username" th:value = "*{username}" id="username"/>
+		 <span class="validationError" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">
+		        Username Error</span>
+	</div>
+	<br/>
+	<div>
+		<label class="required" for="password">Password</label>
+		<input type="password" th:name="password" th:value = "*{password}" id="password"/>
+		 <span class="validationError" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">
+		        Password Error</span>
+	</div>
+	<br/>
+
+	<!--First Name-->
+	<div>
+		<label class="required" for="firstName">First Name</label>
+		<input type="text" th:name="firstName" th:value = "*{firstName}" id="firstName"/>
+		 <span class="validationError" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">
+		        Name Error</span>
+	</div>
+	<br/>
+	<!--Last Name-->
+	<div>
+		<label class="required" for="lastName">Last Name</label>
+		<input type="text" th:name="lastName" th:value = "*{lastName}" id="lastName"/>
+		 <span class="validationError" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">
+		        Name Error</span>
+	</div>
+	<br/>
+	<!--Gender-->
+	<div class="form-group row">
+			<label>Gender</label>
+			<select th:value="${registerationPage.gender}">
+				<option th:value="selectGender">Select your gender</option>
+				<option th:value="Male">Male</option>
+				<option th:value="Female">Female</option>
+			</select>
+
+	</div>
+	<br/>
+	<!--Email-->
+	<div>
+		<label class="required" for="email">Email Address</label>
+		<input type="text" th:name="email" th:value = "*{email}" id="email"/>
+		 <span class="validationError" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">
+		        Name Error</span>
+	</div>
+	<br/>
+	<!--Phone Number-->
+	<div>
+		<label for="phoneNumber">Phone Number</label>
+		<input type="text" placeholder="xxx-xxx-xxxx" th:name="phoneNumber" th:value = "*{phoneNumber}" id="phoneNumber"/>
+		 <span class="validationError" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}">
+		        Name Error</span>
+	</div>
+	<br/>
+	<!--Home Address-->
+	<div>
+		<label for="address">Home Address</label>
+		<input type="text" th:name="address" th:value = "*{address}" id="address"/>
+		 <span class="validationError" th:if="${#fields.hasErrors('address')}" th:errors="*{address}">
+		        Name Error</span>
+	</div>
+	<br/>
+	
+	<!--Signup Button-->
+	<input type="submit" value="Register" class="btn btn-primary w-50 mt-3"/> 
+	<input type="reset" value="Reset" class="btn btn-primary w-50 mt-3"/>
+	<button type="button"><a href="/">Cancel</a></button>
+	
+  </form>
+</body>
+</html>

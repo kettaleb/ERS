@@ -2,12 +2,9 @@ package com.revature.dao;
 
 import java.util.List;
 
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.query.Param;
 
+import org.springframework.data.repository.CrudRepository;
 import com.revature.models.ErsUser;
-import com.revature.models.Reimbursement;
 
 
   public interface UserRepository extends CrudRepository<ErsUser, Integer>{

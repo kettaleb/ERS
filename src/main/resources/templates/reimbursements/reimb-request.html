@@ -26,8 +26,14 @@
 	<!--Remb. Amount-->
 	<div class="form-group">
 		<label for="reimbAmount">Reimbursement Amount</label>
-		<input type="text" class="form-control" placeholder="Amount" th:field="${reimbursement.reimbAmount}"/>
+		<input type="text" class="form-control" th:field="${reimbursement.reimbAmount}"/>
 	</div>
+	<!--<div>
+		<label class="required" for="reimbAmount">Reimbursement Amount</label>
+		<input type="text" th:name="reimbAmount" th:value = "*{reimbAmount}" id="reimbAmount"/>
+		 <span class="validationError" th:if="${#fields.hasErrors('reimbAmount')}" th:errors="*{reimbAmount}">
+		        Name Error</span>
+	</div>-->
 	<!--Reimbursement Type-->
 	<div class="form-group row">
 			<label>Reimbursement types</label>

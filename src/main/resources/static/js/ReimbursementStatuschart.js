@@ -19,7 +19,7 @@ new Chart(document.getElementById("myPieChart"), {
         labels: labelData,
         datasets: [{
             label: 'My dataset',
-            backgroundColor: ["#3e95cd", "#ff2424", "#3cba9f"],
+            backgroundColor: ["#3cba9f", "#3e95cd", "#ff2424"],
             data: countData
         }]
     },
@@ -34,7 +34,7 @@ new Chart(document.getElementById("myPieChart"), {
     }
 });
 
-// "[{"count": 2, "label": "Pending"},{"count":1, "label": "Approved"},{"count": 2, "label": "Denied"}]"
+// "[{"count": 2, "label": "Pending"},{"count":1, "label": "Approved"},{"count": 1, "label": "Denied"}]"
 function decodeHtml(html){
 	var txt = document.createElement("textarea");
 	txt.innerHTML = html;

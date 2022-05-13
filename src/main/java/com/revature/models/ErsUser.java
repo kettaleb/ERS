@@ -71,7 +71,7 @@ public class ErsUser implements UserDetails{
 	private LocalDateTime creationDate;
 	
 	public ErsUser() {
-		setRole("USER_ROLE");
+		
 	}
 	
 	public ErsUser(String username, String password, String role, String firstName, String lastName, String gender,

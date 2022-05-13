@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
 
 @Entity
 public class Reimbursement {
@@ -21,7 +23,9 @@ public class Reimbursement {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int reimbId; //Reimbursement ID is auto-increment in the database
 	
+	//@DecimalMax("10.0") @DecimalMin("0.0")
 	private double reimbAmount; //Reimbursement amount
+	
 	private String reimbType; //Reimbursement type: LODGING, FOOD, TRAVEL
 	
 	private LocalDateTime reimCreationDate; //Reimbursement create date hidden field
